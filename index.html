@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+
+    <style>
+        img {
+            max-width: 100%;
+        }
+    </style>
+</head>
+<body>
+    <!-- Le damos las opciones de imagen que tenemos 
+    Divide el ancho de la imagen en px por los del viewport o contendor,
+    La variable devicePixelRatio, nos da la densidad de píxeles del dispositivo utilizado (1, 2, 3)
+    El navegador, después de dividir el los anchos de imagen y viewport, escoge la que se adapta a la 
+    densidad de píxeles de la pantalla utilizada -->
+    <img src="img/1024px.png" alt="imágenes responsive" srcset="img/1024px.png 1024w, img/1200px.png 1200w, img/350-700px.png 350w, img/768-1536px.png 768w">
+</body>
+</html>
