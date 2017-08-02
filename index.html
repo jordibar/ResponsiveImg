@@ -10,14 +10,51 @@
         img {
             max-width: 100%;
         }
+
+        @media (min-width: 700px) {
+            img {
+                max-width: 50%;
+            }
+        }
+
+        @media (min-width: 1024px) {
+            img {
+                max-width: 75%;
+            }
+        }
     </style>
 </head>
 <body>
+
+    <picture>
+    <!-- Definimos diferentes source para indicarle qué imágenes puede utilizar
+    dependiendo del tamaño de palabra utilizado. Utilizamos los mismos breakpoints
+    utilizados en los @media -->
+        <!-- En este breakpoint las imágenes son del 50%, por lo que
+        necesitamos una imagen de la mitad del tamaño de (700px a 1023) / 2 
+        mientras la densidad de píxeles es de 1x, pero si es de 2x no dividimos por 2 -->
+        <source srcset="img/350-700px.png 750w, img/1024px.png 1024w" media="(min-width:700px)">
+        
+        <!-- En este caso la imagen será 75% su ancho, por lo que los cálculos son:
+        1024 * 0.75 = 768 (minimo en 1x) i 1536 (minimo en 2x) -->
+        <source srcset="img/1024px.png 1024w, img/1200px.png 1200w, img/768-1536px.png 1536w" media="(min-width:1024)">
+
+        <!-- Esta imagen se utilizaría cuando el navegador no utiliza srcset o cuando
+        la pantalla está por debajo de 700px, la imagen está al 100% -->
+        <img src="img/1024px.png" alt="imágenes responsive" srcset="img/350-700px.png 750w, img/1024px.png 1024w, img/1200px.png 1200w, img/768-1536px.png 1536w">
+    </picture>
+
+
+
+
+
+
+
     <!-- Le damos las opciones de imagen que tenemos 
     Divide el ancho de la imagen en px por los del viewport o contendor,
     La variable devicePixelRatio, nos da la densidad de píxeles del dispositivo utilizado (1, 2, 3)
     El navegador, después de dividir el los anchos de imagen y viewport, escoge la que se adapta a la 
     densidad de píxeles de la pantalla utilizada -->
-    <img src="img/1024px.png" alt="imágenes responsive" srcset="img/1024px.png 1024w, img/1200px.png 1200w, img/350-700px.png 350w, img/768-1536px.png 768w">
+    <img src="img/1024px.png" alt="imágenes responsive" srcset="img/350-700px.png 750w, img/1024px.png 1024w, img/1200px.png 1200w, img/768-1536px.png 1536w">
 </body>
 </html>
